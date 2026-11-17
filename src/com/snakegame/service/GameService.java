@@ -7,6 +7,7 @@ import com.snakegame.dto.Food;
 import com.snakegame.dto.Snake;
 
 public class GameService {
+
     public enum MoveResult {
         MOVED,
         ATE,
@@ -32,16 +33,17 @@ public class GameService {
 
     public MoveResult move(Direction d) {
         Cell newHead = snake.nextHead(d);
-        if (!board.isInside(newHead)) {
-            return MoveResult.SELF;
+        if (!board.isInside(newHead)) { //bug
+            return MoveResult.WALL;
         }
         boolean eating = newHead.equals(food.getCell());
         if (snake.willHitSelf(newHead, eating)) {
-            return MoveResult.WALL;
+            return MoveResult.SELF;  // bug
         }
         snake.move(newHead, !eating);
-        foodsEaten++;
+    
         if (eating) {
+            foodsEaten++; //bug
             score += 1;
             food = foodService.spawnFood(snake);
             return MoveResult.ATE;

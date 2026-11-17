@@ -1,7 +1,10 @@
 [
-  {"name": "Meena", "score": 27, "date": "2026-11-10"},
-  {"name": "Arun", "score": 19, "date": "2026-11-11"},
-  {"name": "Divya", "score": 12, "date": "2026-11-11"},
-  {"name": "Karthik", "score": 8, "date": "2026-11-12"},
-  {"name": "Priya", "score": 5, "date": "2026-11-12"}
+  {"name": "harish", "score": 5, "date": "16-11-2026"},
+  {"name": "Meena", "score": 5, "date": "02-11-2026"},
+  {"name": "Karthik", "score": 3, "date": "12-11-2026"},
+  {"name": "Divya", "score": 2, "date": "11-11-2026"},
+  {"name": "loki", "score": 2, "date": "16-11-2026"},
+  {"name": "dr.doom", "score": 2, "date": "16-11-2026"},
+  {"name": "Arun", "score": 1, "date": "09-11-2026"},
+  {"name": "thor", "score": 1, "date": "16-11-2026"},
 ]

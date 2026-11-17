@@ -9,13 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LeaderboardDAO {
-    private static final String DATA_DIR = "data";
+    //bug -->
+    private static final String DATA_DIR = "/Users/hari-zstkk012/The-Snake-Game/data";
     private static final String FILE = DATA_DIR + "/leaderboard.json";
     private static final int MAX_ENTRIES = 10;
 
     public List<LeaderboardEntry> load() {
         Path path = Paths.get(FILE);
-        if (Files.exists(path)) {
+        // bug
+        if (!Files.exists(path)) {
             return new ArrayList<>();
         }
         try {
@@ -28,7 +30,8 @@ public class LeaderboardDAO {
 
     public void save(List<LeaderboardEntry> entries) {
         try {
-            Files.write(Paths.get("leaderboard.json"), JsonUtil.entriesToJson(entries).getBytes());
+            //bug
+            Files.write(Paths.get(FILE), JsonUtil.entriesToJson(entries).getBytes());
         } catch (IOException e) {
             System.out.println("Could not save leaderboard: " + e.getMessage());
         }
@@ -36,11 +39,12 @@ public class LeaderboardDAO {
 
     public List<LeaderboardEntry> recordScore(LeaderboardEntry entry) {
         List<LeaderboardEntry> entries = load();
-        entries.sort((a, b) -> a.getScore() - b.getScore());
+        entries.add(entry);
+        entries.sort((a, b) -> b.getScore() - a.getScore());
         if (entries.size() > MAX_ENTRIES) {
             entries = new ArrayList<>(entries.subList(0, MAX_ENTRIES - 1));
         }
-        entries.add(entry);
+       
         save(entries);
         return entries;
     }

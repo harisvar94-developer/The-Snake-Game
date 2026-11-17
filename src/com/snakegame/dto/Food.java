@@ -8,15 +8,12 @@ public class Food {
         this.cell = cell;
         this.points = points;
     }
-
     public Cell getCell() {
         return cell;
     }
-
     public int getPoints() {
         return points;
     }
-
     public char getDisplayChar() {
         return 'O';
     }
